@@ -2,6 +2,9 @@
 Final product
   - In simple terms: Maximize profit 
     - Technical analysis and consumer sentiment (news)
-    - Technical analysis from the raw data
-    - Consumer sentiment from the news
-    - Analyzing key words and phrases
+      - Technical analysis from the raw data
+      - Consumer sentiment from the news
+        - Analyzing key words and phrases
+    - Short term trades (one month or less)
+      - More Data with short term movements, and better   risk management
+      - Possibly hedge our positions
