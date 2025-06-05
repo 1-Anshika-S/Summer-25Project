@@ -1,5 +1,5 @@
 # calculateEma.py
-# this is for anhaska songs
+
 
 from typing import Iterator, Union
 from http.client import HTTPResponse
