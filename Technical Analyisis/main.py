@@ -2,7 +2,7 @@ from polygon import RESTClient
 
 from calculateEma import calculate_ema
 
-client = RESTClient("lM4FCNnKsxC0zbMXO8ACcVNnBIIgTqkn")
+client = RESTClient("4_zzTgHwqjsDwhFxO7QkQ9ofcoka_r_k")
 ticker: str = "AAPL"
 
 stock_data = client.list_aggs(
