@@ -5,6 +5,7 @@ from polygon.rest.models import Agg
 from datetime import datetime, timedelta
 import pytz          # pip install pytz
 import statistics    # for stdev
+from loadToken import load_token
 
 def format_ts(ts_ms: int) -> str:
     return datetime.utcfromtimestamp(ts_ms / 1000).strftime("%Y-%m-%d")
@@ -15,7 +16,7 @@ def fetch_bars(ticker: str, lookback_days: int = 400):
     start = (today_et - timedelta(days=lookback_days)).strftime("%Y-%m-%d")
     end   = today_et.strftime("%Y-%m-%d")
 
-    client = RESTClient("4_zzTgHwqjsDwhFxO7QkQ9ofcoka_r_k")
+    client = RESTClient(load_token())
     raw = client.list_aggs(
         ticker, 1, "day", start, end,
         adjusted="true", sort="asc", limit=500

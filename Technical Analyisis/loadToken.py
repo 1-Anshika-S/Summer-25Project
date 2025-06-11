@@ -1,9 +1,8 @@
-import os
-from polygon import RESTClient
 from dotenv import load_dotenv
+import os
 
 load_dotenv()
-
 polygon_token = os.environ.get('POLYGON_TOKEN')
-client = RESTClient(polygon_token)
 
+def load_token():
+    return polygon_token

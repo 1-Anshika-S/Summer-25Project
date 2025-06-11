@@ -4,6 +4,7 @@ from polygon import RESTClient
 from polygon.rest.models import Agg
 from datetime import datetime, timedelta
 import pytz  # pip install pytz
+from loadToken import load_token
 
 
 def calculate_ema(
@@ -67,7 +68,7 @@ if __name__ == "__main__":
     # ——————————————————————————————————————————————————————————————————
     #  Replace "YOUR_POLYGON_API_KEY" below with your actual Polygon.io key.
     # ——————————————————————————————————————————————————————————————————
-    client = RESTClient("4_zzTgHwqjsDwhFxO7QkQ9ofcoka_r_k")
+    client = RESTClient(load_token())
     ticker = "AAPL"
 
     # ----------------------------------------------

@@ -1,9 +1,10 @@
 from polygon import RESTClient
-
+from loadToken import load_token
 from calculateEma import calculate_ema
 
-client = RESTClient("4_zzTgHwqjsDwhFxO7QkQ9ofcoka_r_k")
 ticker: str = "AAPL"
+token = load_token()
+client = RESTClient(token)
 
 stock_data = client.list_aggs(
     ticker,
