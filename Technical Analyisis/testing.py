@@ -3,6 +3,7 @@ from http.client import HTTPResponse
 from polygon import RESTClient
 from polygon.rest.models import Agg
 from datetime import datetime, timedelta, timezone
+from loadToken import load_token
 import pytz
 import statistics
 import matplotlib.pyplot as plt  # for plotting
@@ -15,7 +16,7 @@ def fetch_bars(ticker: str, lookback_days: int = 400) -> list[Agg]:
     today_et = datetime.now(eastern).date()
     start = (today_et - timedelta(days=lookback_days)).strftime("%Y-%m-%d")
     end   = today_et.strftime("%Y-%m-%d")
-    client = RESTClient("4_zzTgHwqjsDwhFxO7QkQ9ofcoka_r_k")
+    client = RESTClient(load_token())
     raw = client.list_aggs(
         ticker, 1, "day",
         start, end,
