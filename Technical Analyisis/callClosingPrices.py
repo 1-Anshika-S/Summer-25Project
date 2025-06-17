@@ -5,8 +5,8 @@ from loadToken import load_token
 
 # --- Configuration (Change these!) ---
 API_KEY = RESTClient(load_token()) # <--- IMPORTANT: Replace with your actual API key
-TICKER = "AAPL"                 # <--- The stock ticker you want (e.g., "MSFT", "GOOG")
-DAYS_BACK = 14                  # <--- How many past days you want
+TICKER = ("APPL")                 # <--- The stock ticker you want (e.g., "MSFT", "GOOG")
+DAYS_BACK = 730                  # <--- How many past days you want
 # -----------------------------------
 
 def get_simple_closing_prices(ticker, days_back, api_key):
