@@ -9,6 +9,8 @@ TICKER = ("APPL")                 # <--- The stock ticker you want (e.g., "MSFT"
 DAYS_BACK = 730                  # <--- How many past days you want
 # -----------------------------------
 
+
+
 def get_simple_closing_prices(ticker, days_back, api_key):
     client = (RESTClient(load_token()))
 
