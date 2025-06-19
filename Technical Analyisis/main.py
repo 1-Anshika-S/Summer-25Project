@@ -17,5 +17,3 @@ stock_data = client.list_aggs(
     limit=120,
 )
 
-ema = calculate_ema(stock_data)
-print(ema)
