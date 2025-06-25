@@ -94,4 +94,3 @@ if __name__ == "__main__":
     print("50 day ema: $", ema_50)
     print("200 day ema: $", ema_200)
 
-
