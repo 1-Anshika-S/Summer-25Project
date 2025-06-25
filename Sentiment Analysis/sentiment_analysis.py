@@ -1,6 +1,5 @@
 #Collect Stock Data
 import yfinance as yf
-import pandas as pd
 from datetime import datetime, timedelta
 import pandas as pd
 import nltk
