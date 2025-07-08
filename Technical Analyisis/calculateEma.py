@@ -85,6 +85,7 @@ if __name__ == "__main__":
         limit=500
     )
 
+
     # Pull everything into a list so we can run calculate_ema twice:
     data_list = get_list_from_aggs(raw_aggs)
     # 3) Compute 50-day and 200-day EMAs

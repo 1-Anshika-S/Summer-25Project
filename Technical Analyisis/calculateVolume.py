@@ -191,3 +191,4 @@ if __name__ == "__main__":
     else:
         print("Not enough data to compare 20-day average volume with 50-day EMA.")
     print()
+

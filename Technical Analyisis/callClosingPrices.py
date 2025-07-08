@@ -1,7 +1,7 @@
 import os
 import datetime as dt
 from functools import lru_cache
-
+from loadToken import load_token
 import pandas as pd
 from polygon import RESTClient
 
@@ -10,7 +10,7 @@ from polygon import RESTClient
 _DEFAULT_SYMBOL   = "AAPL"          # change or pass explicitly
 _PERIOD_DAYS      = 730             # rolling window length
 _CACHE_FILE       = "price_data.pkl"  # local on-disk cache
-_API_KEY_ENV_NAME = "POLYGON_API_KEY"
+_API_KEY_ENV_NAME = load_token()
 # ----------------------------------- #
 
 
@@ -21,13 +21,14 @@ def _download_polygon(symbol: str,
     """Download raw daily aggregate bars from Polygon.io."""
     client = RESTClient(api_key)
     aggs = client.get_aggs(
-        symbol=symbol,
+        ticker=symbol,
         multiplier=1,
         timespan="day",
         from_=start_date,
         to=end_date,
-        adjust=True
+        adjusted=True
     )
+
 
     if not aggs:
         raise ValueError(
@@ -56,26 +57,25 @@ def get_price_data(symbol: str = _DEFAULT_SYMBOL) -> pd.DataFrame:
     """
     Return a DataFrame with the last `_PERIOD_DAYS` of daily data.
 
-    • Reads from disk if a fresh cache exists.  
+    • Reads from disk if a fresh cache exists.
     • Otherwise → pulls from Polygon, saves to disk, and returns.
     """
-    end_date   = dt.date.today()
+    # Include today by making the upper bound exclusive
+    end_date   = dt.date.today() + dt.timedelta(days=1)
     start_date = end_date - dt.timedelta(days=_PERIOD_DAYS)
 
     # 1) Try cache ----------------------------------------------------------
     if os.path.isfile(_CACHE_FILE):
         df_cached = pd.read_pickle(_CACHE_FILE)
-
-        # Ensure cache covers the full 730-day window (accounts for weekends)
         if (
             not df_cached.empty
             and df_cached.index.min().date() <= start_date
             and df_cached.index.max().date() >= end_date - dt.timedelta(days=1)
         ):
-            return df_cached.copy()  # return a safe copy
+            return df_cached.copy()
 
     # 2) Download fresh data ------------------------------------------------
-    api_key = os.getenv(_API_KEY_ENV_NAME)
+    api_key = load_token()
     if not api_key:
         raise EnvironmentError(
             f"Set your Polygon API key in the { _API_KEY_ENV_NAME } environment variable."
