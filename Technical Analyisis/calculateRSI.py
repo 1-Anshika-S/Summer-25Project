@@ -88,3 +88,6 @@ if __name__ == "__main__":
         rsi_str  = f"{rsi:6.2f}" if rsi is not None else "   nan"
         ma_str   = f"{ma:8.2f}" if ma is not None else "     nan"
         print(f"{date_str:<12} {close:8.2f} {rsi_str} {ma_str}")
+
+
+f
