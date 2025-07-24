@@ -2,8 +2,14 @@
 [project]
 name = "summer-25-project"
 version = "2020.0.0"
-dependencies = ["pytz", "dotenv", "polygon-api-client", "matplotlib"]
-requires-python = ">=3.8"
+dependencies = [
+    "pytz",
+    "dotenv",
+    "polygon-api-client",
+    "matplotlib",
+    "Django==5.2.4",      #(>=4.2.23,<=4.2.23)",
+]
+requires-python = ">=3.9"
 authors = [
     { name = "Anshika Singh" },
     { name = "Colin Berry" },
