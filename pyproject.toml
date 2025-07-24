@@ -1,0 +1,11 @@
+
+[project]
+name = "summer-25-project"
+version = "2020.0.0"
+dependencies = ["pytz", "dotenv", "polygon-api-client", "matplotlib"]
+requires-python = ">=3.8"
+authors = [
+    { name = "Anshika Singh" },
+    { name = "Colin Berry" },
+    { name = "Dylan Myers" },
+]
