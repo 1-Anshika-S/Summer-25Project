@@ -14,5 +14,5 @@ Create a `.env` file in the `Technical Analysis` file based on the `.env.example
 
 Install the necessary modules with the following command:
 ```bash
-pip3 install pytz dotenv polygon-api-client matplotlib
+pip3 install .
 ```
