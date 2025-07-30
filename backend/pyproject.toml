@@ -8,7 +8,8 @@ dependencies = [
     "polygon-api-client",
     "matplotlib",
     "Django==5.2.4",
-    "fastapi",  #(>=4.2.23,<=4.2.23)",
+    "flask-restful",
+    "flask",
 ]
 requires-python = ">=3.9"
 authors = [

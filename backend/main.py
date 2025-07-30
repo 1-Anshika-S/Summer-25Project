@@ -1,8 +1,14 @@
-from fastapi import FastAPI
+from flask import Flask
+from flask_restful import Resource, Api
 
-app = FastAPI()
+app = Flask(__name__)
+api = Api(app)
 
+class HelloWorld(Resource):
+    def get(self):
+        return {'hello': 'world'}
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+api.add_resource(HelloWorld, '/')
+
+if __name__ == '__main__':
+    app.run(debug=True)
