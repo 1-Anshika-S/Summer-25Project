@@ -7,7 +7,6 @@ dependencies = [
     "dotenv",
     "polygon-api-client",
     "matplotlib",
-    "Django==5.2.4",
     "flask-restful",
     "flask",
 ]
