@@ -4,7 +4,7 @@ import { configs } from "./lib/configs";
 const fetchTickerData = async (ticker: string) => {
   const r = await fetch(`${configs.BACKEND}/tickers/AAPL`);
 
-  if (r.status != 200) {
+  if (r.status !== 200) {
     return {
       message: "Yikers",
     };

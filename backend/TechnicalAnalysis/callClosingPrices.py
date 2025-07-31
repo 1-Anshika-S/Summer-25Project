@@ -1,7 +1,7 @@
 import os
 import datetime as dt
 from functools import lru_cache
-from loadToken import load_token
+from . import loadToken
 import pandas as pd
 from polygon import RESTClient
 
@@ -10,7 +10,7 @@ from polygon import RESTClient
 _DEFAULT_SYMBOL   = "AAPL"          # change or pass explicitly
 _PERIOD_DAYS      = 730             # rolling window length
 _CACHE_FILE       = "price_data.pkl"  # local on-disk cache
-_API_KEY_ENV_NAME = load_token()
+_API_KEY_ENV_NAME = loadToken.load_token()
 # ----------------------------------- #
 
 
@@ -75,7 +75,7 @@ def get_price_data(symbol: str = _DEFAULT_SYMBOL) -> pd.DataFrame:
             return df_cached.copy()
 
     # 2) Download fresh data ------------------------------------------------
-    api_key = load_token()
+    api_key = loadToken.load_token()
     if not api_key:
         raise EnvironmentError(
             f"Set your Polygon API key in the { _API_KEY_ENV_NAME } environment variable."
