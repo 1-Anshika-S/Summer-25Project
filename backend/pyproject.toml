@@ -9,6 +9,7 @@ dependencies = [
     "matplotlib",
     "flask-restful",
     "flask",
+    "flask_cors",
 ]
 requires-python = ">=3.9"
 authors = [
