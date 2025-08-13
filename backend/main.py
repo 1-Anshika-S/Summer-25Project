@@ -3,6 +3,7 @@ from flask_restful import Resource, Api
 from flask_cors import CORS
 
 from TechnicalAnalysis import callClosingPrices
+from TechnicalAnalysis import calculateEma
 
 app = Flask(__name__)
 api = Api(app)
@@ -20,6 +21,16 @@ class HelloWorld(Resource):
         return {
             'ticker': new_ticker,
             'closingPrices': closing_prices.to_dict(orient='records'),
+        }
+
+class EMA(Resource):
+    def get(self, ticker: str):
+        new_ticker = ticker.upper()
+        ema = calculateEma.get_price_data(new_ticker)
+
+        return {
+            'ticker': new_ticker,
+            'emaValue': ema.to_dict(orient='records'),
         }
 
 api.add_resource(HelloWorld, '/tickers/<string:ticker>')
