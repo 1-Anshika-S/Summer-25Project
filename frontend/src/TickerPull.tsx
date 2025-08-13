@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { configs } from "./lib/configs";
 
 const fetchTickerData = async (ticker: string) => {
-  const r = await fetch(`${configs.BACKEND}/tickers/AAPL`);
+  const r = await fetch(`${configs.BACKEND}/tickers/${ticker}`);
 
   if (r.status !== 200) {
     return {
@@ -10,19 +10,18 @@ const fetchTickerData = async (ticker: string) => {
     };
   }
 
-  const body = await r.json();
-  return body;
+  return await r.json();
 };
 
-const TickerPull = () => {
+const TickerPull = (args: { ticker: string }) => {
   const [tickerApiResponse, setTickerApiResponse] = useState({});
 
   useEffect(() => {
-    fetchTickerData("APPL").then((a) => {
+    fetchTickerData(args.ticker).then((a) => {
       console.log(a);
       setTickerApiResponse(a);
     });
-  }, []);
+  }, [args.ticker]);
 
   return <pre>{JSON.stringify(tickerApiResponse, null, 4)}</pre>;
 };

@@ -10,18 +10,18 @@ CORS(app)
 
 
 
-supportedTickers: list[str] = ["AAPL"]
+supportedTickers: list[str] = ["AAPL", 'RKLB']
 
 class HelloWorld(Resource):
     def get(self, ticker: str):
-        newTicker = ticker.upper()
-        if newTicker not in supportedTickers:
+        new_ticker = ticker.upper()
+        if new_ticker not in supportedTickers:
             return Response("", 404)
 
-        closingPrices = callClosingPrices.get_price_data(newTicker)
+        closing_prices = callClosingPrices.get_price_data(new_ticker)
         return {
-            'ticker': newTicker,
-            'closingPrices': closingPrices.to_string(),
+            'ticker': new_ticker,
+            'closingPrices': closing_prices.to_string(),
         }
 
 api.add_resource(HelloWorld, '/tickers/<string:ticker>')
