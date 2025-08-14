@@ -24,16 +24,18 @@ class HelloWorld(Resource):
         }
 
 class EMA(Resource):
-    def get(self, ticker: str):
-        new_ticker = ticker.upper()
-        ema = calculateEma.get_price_data(new_ticker)
+    def get(self, ema: str):
+        new_ema = ema.upper()
+        new_period = period_range
+        emaVal = calculateEma.calculate_ema(new_ema, )
 
         return {
-            'ticker': new_ticker,
-            'emaValue': ema.to_dict(orient='records'),
+            'ticker': new_ema,
+            'emaValue': emaVal.to_dict(orient='records'),
         }
 
 api.add_resource(HelloWorld, '/tickers/<string:ticker>')
+api.add_resource(EMA, '/ema/<string:ema>')
 
 if __name__ == '__main__':
     app.run(
