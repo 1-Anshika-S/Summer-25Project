@@ -1,4 +1,4 @@
-# Summer-25Project
+# Stock Market Analysis Dashboard
 Final product
   - In simple terms: Maximize profit
     - Technical analysis and consumer sentiment (news)
