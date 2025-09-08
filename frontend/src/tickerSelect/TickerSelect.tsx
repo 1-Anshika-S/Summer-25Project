@@ -1,0 +1,41 @@
+import { useState } from "react";
+import { TickerZodObject, tickerZodObject } from "./tickersZodObject";
+import { SelectTickerList } from "./TickerList";
+import "./TickerSelect.css";
+
+export const TickerSelect = ({
+  setActiveTicker,
+}: {
+  setActiveTicker: React.Dispatch<
+    React.SetStateAction<{
+      name: string;
+      ticker: string;
+    }>
+  >;
+}) => {
+  const [tickerList, setTickerList] = useState<TickerZodObject>([]);
+
+  const searchTickerList = async (event: React.FormEvent<HTMLInputElement>) => {
+    const currentSearchTerm = event.currentTarget.value;
+    const values = await fetch(
+      `https://tickers.penylo.dev/v2/search?q=${currentSearchTerm}`,
+    );
+    console.info(values);
+    const zodParse = tickerZodObject.safeParse(await values.json());
+    if (!zodParse.error) {
+      setTickerList(zodParse.data);
+    }
+  };
+
+  return (
+    <div className="tickerSelect">
+      <div className="tickerSelectHeader">
+        <div className="tickerSelectHeaderInner">
+          <span className="smallText">Search Tickers:</span>
+          <input onInput={searchTickerList}></input>
+        </div>
+      </div>
+      <SelectTickerList tickerList={tickerList} setTicker={setActiveTicker} />
+    </div>
+  );
+};

@@ -11,7 +11,7 @@ type DropDownPropsShare = {
 const DropDownMenu = ({
   showing,
   ddProps,
-    searchTerm,
+  searchTerm,
 }: {
   showing: boolean;
   searchTerm: string;
@@ -22,10 +22,11 @@ const DropDownMenu = ({
     for (const ticker in tickers) {
       const tickerItem = tickers[ticker];
 
-      if(
-          !tickerItem.companyName.toLowerCase().includes(searchTerm.toLowerCase())
-          &&
-          !ticker.toLowerCase().includes(searchTerm.toLowerCase())
+      if (
+        !tickerItem.companyName
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase()) &&
+        !ticker.toLowerCase().includes(searchTerm.toLowerCase())
       ) {
         continue;
       }
@@ -55,7 +56,7 @@ export const TickerSelectBox = (props: DropDownPropsShare) => {
     console.log(props.selectedTicker);
   }, [props.selectedTicker]);
 
-  const [searchTerm, setSearchTerm] = useState("")
+  const [searchTerm, setSearchTerm] = useState("");
 
   return (
     <div className="comboBoxWrap">
@@ -78,12 +79,16 @@ export const TickerSelectBox = (props: DropDownPropsShare) => {
           }}
           placeholder={tickers[props.selectedTicker].companyName}
           onInput={(e) => {
-            setSearchTerm(e.currentTarget.value)
+            setSearchTerm(e.currentTarget.value);
           }}
         />
       </div>
 
-      <DropDownMenu searchTerm={searchTerm} showing={showing} ddProps={props}></DropDownMenu>
+      <DropDownMenu
+        searchTerm={searchTerm}
+        showing={showing}
+        ddProps={props}
+      ></DropDownMenu>
     </div>
   );
 };

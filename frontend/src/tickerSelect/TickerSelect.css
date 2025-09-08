@@ -1,0 +1,52 @@
+.tickerSelect {
+    height: 100dvh;
+    overflow-y: auto;
+    background: white;
+    padding: 0rem 0.5rem 0.5rem 0.5rem;
+    box-sizing: border-box;
+    width: 15rem;
+}
+
+.smallText {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    text-align: left;
+    margin: 0;
+}
+
+.tickerList {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.tickerList button {
+    padding: 0.25rem;
+    outline: 0px;
+    border: 0px;
+    background: white;
+    border-bottom: 1px solid gray;
+
+    &:hover {
+        background: #81d4fa;
+    }
+}
+
+.tickerCard {
+    overflow-x: hidden;
+    text-wrap-mode: nowrap;
+    text-align: left;
+    font-size: 0.8rem;
+}
+
+.tickerSelectHeader {
+    position: sticky;
+    top: 0;
+    background: white;
+    padding-bottom: 0.5rem;
+}
+
+.tickerSelectHeaderInner {
+    backdrop-filter: blur(10px);
+    z-index: 10;
+}
