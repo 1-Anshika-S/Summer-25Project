@@ -2,7 +2,7 @@
     height: 100dvh;
     overflow-y: auto;
     background: white;
-    padding: 0rem 0.5rem 0.5rem 0.5rem;
+    padding: 0rem 0rem 0rem 0rem;
     box-sizing: border-box;
     width: 15rem;
 }
@@ -21,7 +21,6 @@
 }
 
 .tickerList button {
-    padding: 0.25rem;
     outline: 0px;
     border: 0px;
     background: white;
@@ -32,21 +31,11 @@
     }
 }
 
-.tickerCard {
-    overflow-x: hidden;
-    text-wrap-mode: nowrap;
-    text-align: left;
-    font-size: 0.8rem;
-}
-
 .tickerSelectHeader {
     position: sticky;
     top: 0;
-    background: white;
-    padding-bottom: 0.5rem;
-}
-
-.tickerSelectHeaderInner {
-    backdrop-filter: blur(10px);
     z-index: 10;
+    background: rgba(255, 255, 255, 0.9);
+    padding-bottom: 0.5rem;
+    backdrop-filter: blur(10px);
 }
