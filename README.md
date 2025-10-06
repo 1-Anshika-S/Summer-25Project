@@ -1,4 +1,7 @@
 # Stock Market Analysis Dashboard (S.M.A.D.)
+
+
+
 Final product
   - In simple terms: Maximize profit
     - Technical analysis and consumer sentiment (news)

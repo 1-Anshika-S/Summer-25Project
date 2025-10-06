@@ -7,7 +7,7 @@ export const TickerCard = ({
   ticker: string;
   name: string;
 }) => {
-  const imageSrc = `https://logo.penylo.dev/${ticker}`;
+  const imageSrc = `https://icons.penylo.dev/${ticker}`;
 
   return (
     <div className={styles.tickerCard}>
